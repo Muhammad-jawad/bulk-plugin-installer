@@ -1,0 +1,21 @@
+#bulk_plugin_installer_block{width:800px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to right,#4568dc,#b06ab3);color:#fff;font-family:'Lato',sans-serif;padding:10px 30px 30px}
+#bulk_plugin_installer_block .div_container{min-width:800px}
+#bulk_plugin_installer_block .postbox{padding-bottom:5px;background:transparent;margin:0 10px 10px}
+.bulk_plugin_installer_h3{font-size:25px;margin-top:30px;text-transform:uppercase;color:#80ff0c}
+#bulk_plugin_installer_block .bulk_plugin_installer_error{color:red;background:#000;font-size:16px;padding:15px}
+#bulk_plugin_installer_block .bulk_plugin_installer_button{outline:none;font-size:20px!important;font-weight:400;width:250px;margin-top:10px;background:transparent;border-radius:0;border:2px dashed;padding:3px;color:#fff;text-decoration:none;padding:10px 10px}
+#bulk_plugin_installer_block .bulk_plugin_installer_button:hover{color:#000}
+#bulk_plugin_installer_block h3{color:#fff;text-transform:uppercase}
+#bulk_plugin_installer_block .file-drop-area{position:relative;display:flex;align-items:center;width:450px;max-width:100%;padding:25px;border:1px dashed rgba(255,255,255,0.4);border-radius:3px;transition:.2s}
+#bulk_plugin_installer_block .file-drop-area.is-active{background-color:rgba(255,255,255,0.05)}
+#bulk_plugin_installer_block .fake-btn{flex-shrink:0;background-color:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:8px 15px;margin-right:10px;font-size:12px;text-transform:uppercase}
+#bulk_plugin_installer_block .file-msg{font-size:small;font-weight:300;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bulk_plugin_installer_block .file-input{position:absolute;left:0;top:0;height:100%;width:100%;cursor:pointer;opacity:0}
+#bulk_plugin_installer_block .file-input:focus{outline:none}
+#bulk_plugin_installer_block .wrap p:last-child{display:none!important}
+#bulk_plugin_installer_block .file-block{border-radius:10px;background-color:#fff;margin:5px;color:initial;display:inline-flex}
+#bulk_plugin_installer_block .file-block > span.name{width:max-content;display:inline-flex;padding:4px 20px 4px 4px; -webkit-touch-callout: none; /* iOS Safari */-webkit-user-select: none; /* Safari */-khtml-user-select: none; /* Konqueror HTML */-moz-user-select: none; /* Old versions of Firefox */-ms-user-select: none; /* Internet Explorer/Edge */user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */}
+#bulk_plugin_installer_block .file-delete{display:flex;width:24px;color:initial;background-color:#6eb4ff #0;font-size:large;justify-content:center;margin-right:3px;cursor:pointer}
+#bulk_plugin_installer_block .file-delete:hover{background-color:rgba(144,163,203,0.2);border-radius:10px}
+#bulk_plugin_installer_block .file-delete > span{transform:rotate(45deg)}
+#bulk_plugin_installer_block .wrap {margin-top: -10px !important;margin-left: 0;}

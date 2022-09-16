@@ -21,7 +21,11 @@ remove plugins if any wrong file is uploaded
 Auto correct plugin file name
 prevent same plugin to install twice
 
+== Screenshots ==
 
+1. Menu Location
+2. Main Plugin Dashboard
+3. Upload files and press activate and install
 
 == Installation ==
 
@@ -39,7 +43,15 @@ prevent same plugin to install twice
 
 == Changelog ==
 
+= Version 1.0.2 =
+
+* Update screenshots, banner and icon
+
 = Version 1.0.1 =
+
+* Fixes Update plugin issue
+
+= Version 1.0.0 =
 
 * Initial release
 

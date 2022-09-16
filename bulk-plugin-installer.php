@@ -16,7 +16,7 @@
  * Plugin Name:       Bulk Plugin Installer
  * Plugin URI:        https://jawadarshad.io/
  * Description:       This plugin is created to save the time of installing plugin one by one. All you have to do is Install Plugin, Drag & Drop your plugins at once and press activate.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Jawad Arshad
  * Author URI:        https://jawadarshad.io/
  * License:           GPL-2.0+

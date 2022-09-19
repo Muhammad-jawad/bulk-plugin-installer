@@ -188,41 +188,80 @@ class Bulk_Plugin_Installer_Admin {
     	// download the plugin handler form the wordpress org
     function bulk_plugin_installer_plugin_install_download($package,$bulk_plugin_installer_action)
 	{
-        global $wp_version;
+		global $wp_version;
 
-         include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';  
+		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
-		$plugin_upgrader = new Plugin_Upgrader( new Plugin_Installer_Skin( compact('type', 'title', 'nonce', 'url') ) ); 
+		// If using version less than 3
+		if(version_compare($wp_version, '3.0', '<'))
+		{
+			$plugin_upgrader = new Plugin_Upgrader(); 
+         $plugin_upgrader->install($package);
+           // Donot activate and show message to user to activate manually
+        	if ($plugin_upgrader->plugin_info()){
+        		echo "We have install this plugin in your website but not activated this because you are using older version of WordPress. Please activate this manually.";
+        	}
 
-		$package_checker = $package;
+      } // If version greater than 3.0 end
 
-		if (file_exists($package_checker)) {
-		    _e('<span>Package found</span>','bulk_plugin_installer');
-		    $resource = $plugin_upgrader->install($package); 
-		    //remove temp files
-		    unlink($package);
-		} else {
-		    echo "Cannot find package: Seems like something is wrong with your uploaded files. Can you please make sure you are not uploading same plugin twice. Thanks.<br>";
-		}
-			
+      // If Version greater than 3.0  
+      else
+      {	
 
-		if (!$plugin_upgrader->plugin_info() && $resource){
+      	//wp-content Upgrader
+	   	$plugin_upgrader = new Plugin_Upgrader( new Plugin_Installer_Skin( compact('type', 'title', 'nonce', 'url') ) ); 
+
+
+
+			$package_checker = $package;
+
+			// Checing if file exist
+			if (file_exists($package_checker)) 
+			{
+			 _e('<span>Package found</span>','bulk_plugin_installer');
+			 $resource = $plugin_upgrader->install($package); 
+			 //remove temp files
+			 unlink($package);
+
+			} 
+			// If Package doesn't exists
+			else 
+			{
+			 echo "Cannot find package: Seems like something is wrong with your uploaded files. Can you please make sure you are not uploading same plugin twice. Thanks.<br>";
+			}
+
+			// If Package Doesn't exists
+			if (!$plugin_upgrader->plugin_info() && $resource)
+			{
 			 echo $resource;
-		}
-		
-		elseif($bulk_plugin_installer_action =="plugin_activate" && $resource){
-			$bulk_plugin_installer_plugins = get_option('active_plugins');
-			if($bulk_plugin_installer_plugins){
-				$pluginsListsToActivate = array($plugin_upgrader->plugin_info());
-				foreach ($pluginsListsToActivate as $plugin){
-					if (!in_array($plugin, $bulk_plugin_installer_plugins)) {
-						 array_push($bulk_plugin_installer_plugins,$plugin);
-						 update_option('active_plugins',$bulk_plugin_installer_plugins);
+			}
+			// If Package exists activate plugin
+			elseif($bulk_plugin_installer_action =="plugin_activate" && $resource)
+			{
+				$bulk_plugin_installer_plugins = get_option('active_plugins');
+				// Add Plugin in active_plugin option db
+				if($bulk_plugin_installer_plugins)
+				{
+					$pluginsListsToActivate = array($plugin_upgrader->plugin_info());
+
+					// Foreach on all plugin to activate
+					foreach ($pluginsListsToActivate as $plugin)
+					{
+						// If not exists plugin in active_plugins than activate
+						if (!in_array($plugin, $bulk_plugin_installer_plugins)) 
+						{
+							 array_push($bulk_plugin_installer_plugins,$plugin);
+							 update_option('active_plugins',$bulk_plugin_installer_plugins);
+						}
 					}
 				}
+				// Message after activate
+				_e('<p>Plugin activated successfully.</p><br/>','bulk_plugin_installer');
 			}
-			_e('<p>Plugin activated successfully.</p><br/>','bulk_plugin_installer');
-		}
+
+
+      }
     }
+
 
 }

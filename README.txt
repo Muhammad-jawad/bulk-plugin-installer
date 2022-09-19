@@ -43,6 +43,12 @@ prevent same plugin to install twice
 
 == Changelog ==
 
+= Version 1.0.3 =
+
+* Fix Version 3.0 issue to activate plugin
+* Default message if version is less than  3.0
+* fix issue related duplicate plugins with diffrent names
+
 = Version 1.0.2 =
 
 * Update screenshots, banner and icon

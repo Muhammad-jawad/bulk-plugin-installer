@@ -27,7 +27,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 /**
@@ -36,7 +36,19 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 $bpi_upload_dir = wp_upload_dir();
-define( 'BULK_PLUGIN_INSTALLER_VERSION', '1.0.0' );
+
+if (!function_exists( 'get_plugin_data' ) )
+{
+   require_once( ABSPATH . 'wp-admin/includes/plugin.php' ); 
+}
+
+
+$plugin_data = get_plugin_data( __FILE__ );
+
+$plugin_version = $plugin_data['Version'];
+
+
+define( 'BULK_PLUGIN_INSTALLER_VERSION', $plugin_version );
 define('BPIUPLOADDIR_PATH', $bpi_upload_dir['basedir']);
 define('BPIPLUGIN_PATH', plugin_dir_path(__FILE__));
 define('BPIPLUGIN_URL', plugin_dir_url(__FILE__));
@@ -47,8 +59,8 @@ define('BPI_WP_PLUGIN_DIR',dirname(plugin_dir_path(__FILE__)));
  * This action is documented in includes/class-bulk-plugin-installer-activator.php
  */
 function activate_bulk_plugin_installer() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bulk-plugin-installer-activator.php';
-	Bulk_Plugin_Installer_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-bulk-plugin-installer-activator.php';
+    Bulk_Plugin_Installer_Activator::activate();
 }
 
 /**
@@ -56,8 +68,8 @@ function activate_bulk_plugin_installer() {
  * This action is documented in includes/class-bulk-plugin-installer-deactivator.php
  */
 function deactivate_bulk_plugin_installer() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bulk-plugin-installer-deactivator.php';
-	Bulk_Plugin_Installer_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-bulk-plugin-installer-deactivator.php';
+    Bulk_Plugin_Installer_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_bulk_plugin_installer' );
@@ -100,8 +112,8 @@ $myUpdateChecker->setBranch('main');
  */
 function run_bulk_plugin_installer() {
 
-	$plugin = new Bulk_Plugin_Installer();
-	$plugin->run();
+    $plugin = new Bulk_Plugin_Installer();
+    $plugin->run();
 
 }
 run_bulk_plugin_installer();
